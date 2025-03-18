@@ -346,13 +346,17 @@ export default function KanbanBoard() {
                   onDragStart={(e) => handleDragStart(e, candidate.id, column.id)}
                   className="cursor-grab active:cursor-grabbing"
                 >
-                  <CandidateCard candidate={candidate} />
-                  <button
+                  <CandidateCard
+                    candidate={candidate}
+                    onDelete={() => handleDeleteCandidate(candidate.id, column.id)} // ✅ Pass the function
+                  />
+
+                  {/* <button
                     onClick={() => handleDeleteCandidate(candidate.id, column.id)}
                     className="text-white bg-red-500 p-2 m-2 rounded-lg hover:text-red-700"
                   >
                     Delete
-                  </button>
+                  </button> */}
                 </div>
               ))}
               {column.candidates.length === 0 && (
